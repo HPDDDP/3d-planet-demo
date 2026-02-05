@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gesture Planet Studio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div class="title-block">
+          <p class="eyebrow">Gesture + 3D</p>
+          <h1>Gesture Planet Studio</h1>
+          <p class="subtitle">
+            Use your hand to rotate and zoom a 3D planet in real time.
+          </p>
+        </div>
+        <div class="controls">
+          <button id="cameraToggle" class="primary">Enable Camera</button>
+          <div class="status" id="cameraStatus">Camera off</div>
+        </div>
+      </header>
+
+      <section class="stage">
+        <div class="canvas-card">
+          <canvas id="scene" aria-label="3D planet"></canvas>
+          <div class="hud">
+            <video
+              id="video"
+              autoplay
+              playsinline
+              muted
+              class="is-hidden"
+              aria-label="Camera preview"
+            ></video>
+            <div class="hud-text">Move palm to rotate. Pinch to zoom.</div>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <h2>Quick Start</h2>
+          <ol class="steps">
+            <li>Click Enable Camera to grant permission.</li>
+            <li>Hold one hand in view of the camera.</li>
+            <li>Move your palm left or right to rotate.</li>
+            <li>Move your palm up or down to tilt.</li>
+            <li>Pinch thumb and index finger to zoom.</li>
+          </ol>
+
+          <div class="upload">
+            <label class="upload-btn" for="modelInput">Upload 3D Model</label>
+            <input
+              id="modelInput"
+              class="file-input"
+              type="file"
+              accept=".glb,.gltf"
+            />
+            <button id="resetPlanet" class="ghost">Reset to Earth</button>
+          </div>
+
+          <div class="telemetry">
+            <div>Hand detected: <span id="handStatus">No</span></div>
+            <div>Pinch distance: <span id="pinchValue">--</span></div>
+          </div>
+
+          <p class="note">
+            Camera access requires HTTPS or localhost in most browsers. Opening
+            this file directly may block camera permission.
+          </p>
+        </aside>
+      </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
